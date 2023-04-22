@@ -1,0 +1,180 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/youtube.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+    <title>Document</title>
+</head>
+
+<body >
+    
+    <div class="main_container" >
+        <div class="barre">
+            <div id="table" style="display:none;">
+                <table border="1" style="background: rgb(57,46,49);">
+                    <thead>
+                        <th style="color:white;">Historique</th>
+                    </thead>
+                    <tbody>
+                    {% for board in boards%}
+                    <tr>
+                       <td style="color:white;">{{board.input}}</td>
+                      
+                    </tr>
+                    {%endfor%}
+                    </tbody>
+                </table> 
+               
+            </div>
+            <div id="icon_container" onclick="apparaitre()">
+                <div class="icon_container1">
+                    <i class="fa-solid fa-bars bar"></i>
+                </div>
+                <div id="select" style="display:none;">
+                    <ul>
+                        <li><i class="fa-solid fa-house home"></i>
+                            <div class="Acceuil">Acceuil</div>
+                        </li>
+                        <li><i class="fa-solid fa-clock"></i>
+                            <div class="Acceuil">shorts</div>
+                        </li>
+                        <li><i class="fa-solid fa-video"></i>
+                            <div class="Acceuil">abonnements</div>
+                        </li>
+                        <li><i class="fa-solid fa-photo-film"></i>
+                            <div class="Acceuil">Bibliotheque</div>
+                        </li>
+                        <li onclick="noni()"><i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                            <div class="Acceuil" >Historique</div>
+                        </li>
+                        <li><i class="fa-solid fa-video"></i>
+                            <div class="Acceuil">Vos videos</div>
+                        </li>
+                        <li><i class="fa-solid fa-clock"></i>
+                            <div class="Acceuil">A regarder plus tard </div>
+                        </li>
+                        <li onclick="iapparaitre()"><i class="fa-sharp fa-solid fa-thumbs-up" ></i>
+                            <div class="Acceuil">Like</div>
+                        </li>
+                        <li><i class="fa-solid fa-angle-down"></i>
+                            <div class="plus_container">
+                                <div class="Acceuil plus">Plus</div>
+                                <div class="ul2">
+                                    <ul class="select2">
+                                        <li><i class="fa-sharp fa-solid fa-bars-staggered"></i>
+                                            <div class="plus1">K</div>
+                                        </li>
+                                        <li><i class="fa-sharp fa-solid fa-bars-staggered"></i>
+                                            <div class="plus1">H</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="logo1">
+                <i class="fa-solid fa-laptop-code fa-2xl">Programplanet</i>
+            </div>
+
+            <div class="input">
+                <form method="POST" action="" >{% csrf_token %}
+                <input type="text" class="input" name="recherche">
+                
+            </div>
+            <button class="search_btn"><i class="fa-solid fa-magnifying-glass search"></i></button>
+        </form>
+            <div class="micro">
+                <i class="fa-solid fa-microphone micro1"></i>
+            </div>
+            <div class="vid">
+                <i class="fa-solid fa-video videos"></i>
+            </div>
+            <div class="not">
+                <i class="fa-solid fa-bell notification"></i>
+            </div>
+        </div>
+        <div class="second-block">
+            <nav class="nav1">
+                <button>
+                    Tous
+                <button>
+                    Jeux-video
+                </button>
+                <button>
+                    Musique
+                </button>
+                <button>
+                    Series-televisees
+                </button>
+                <button>
+                    Cheikhs
+                </button>
+                <button>
+                    Manga
+                </button>
+                <button>
+                    Animation
+                </button>
+            </nav>
+            <nav class="nav2">
+                <button>
+                    Animation
+                </button>
+                <button>
+                    Animation
+                </button>
+                <button>
+                    Animation
+                </button>
+                <button>
+                    Animation
+                </button>
+                <button>
+                    AnimationF
+                </button>
+                <button>
+                    Animation
+                </button>
+                
+            </nav>
+        </div>
+        <div class="third-block">
+            <form method="GET" action="" >{% csrf_token %}    
+            {% for x in video %}
+            <section class="image"><a href="/video/?id={{x.id}}"><img class="minature" src="{{x.minature.url}}"><i class="fa-solid fa-laptop-code chaine"></i><p class="hi">{{x.caption}}<br> anas akchan<br>283 k vues . il y a 1 jour</p></section></a>
+            {% endfor %}
+            </form>
+        </div>
+        </div>
+        </div>
+        <h1>BOARDS</h1>
+
+</div>
+<script>
+    icon_bar = document.getElementById("icon_container");
+    select = document.getElementById("select");
+    table = document.getElementById("table");
+    function noni(){
+          table.style.display = "block";
+          icon_bar.style.display = "none";
+    }
+    function apparaitre(){
+          select.style.display= "block";
+          select.style.width = "200px";
+    }
+    function iapparaitre(){
+        select.style.display= "none";
+        select.style.width = "200px";
+  }
+</script>
+    <!-- TODO: search about SEO -->
+    <!-- TODO: breakpoints reponsive design  -->
+    <!-- TODO: pseudo class css -->
+</body>

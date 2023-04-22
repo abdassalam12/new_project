@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+    <center>
+        <div class="logo1">
+            <i class="fa-solid fa-laptop-code fa-2xl">Programplanet</i>
+        </div>
+        <h1>Your way to a better inderstanding <br>in the domain of programming</h1>
+<ul>
+    
+        <button type="submit" id="button"><a href="/login">Login</a></button>
+    
+    
+        <button type="submit" id="button1"><a href="/register">SignUp</a></button>
+    
+    
+        <button type="submit" id="button2"><a href="/home">LogOut</a></button>
+<ul>
+</center>
+    <style>
+        h1{
+            margin-top: 80px;
+            background-color: white;        }
+        .logo1{
+            color:white;
+            margin-top:100px;
+        }
+        body{
+            background-image: url("{% static 'images/ciel-etoiles-nuit.jpg' %}");
+        }
+        button{
+            border-radius: 25px;
+            margin: 50px;
+            padding:25px;
+            padding-left: 50px;
+            padding-right: 50px;
+            background-color: rgb(38, 23, 52);
+        }
+        a{
+            font-size: 40px;
+            text-decoration: none;
+            color:white;
+        }
+    </style>
+    <script>
+         const button1 = document.getElementById("button")
+         button1.disabled = true;
+         const button2 = document.getElementById("button1")
+         button2.disabled = true;
+         const button3 = document.getElementById("button2")
+         button3.disabled = true;
+    </script>
+</body>
+</html>

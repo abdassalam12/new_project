@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Document</title>
+</head>
+<body>
+        
+    <center>
+        <div class="logo1">
+            <i class="fa-solid fa-laptop-code fa-2xl">Programplanet</i>
+        </div>
+        {% if messages == 'you account was succesfully created' %}
+        <h1>{{messages}}<h1>
+        {% endif %}
+        <h1>Login</h1>
+        <div class="form">
+        <form method="POST" action="">{% csrf_token %}
+            <label for="username">first email</label><br>
+            <input name="username" type="text" id="username"><br>
+            <label for="password">password</label><br>
+            <input name="password" type="password" id="password"><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+</center>
+<style>
+    button{
+        padding: 10px;
+        padding-left: 20px;
+        padding-right:20px;
+        border-radius: 20px;
+        border:none;
+        background-color: rgb(31, 23, 39);
+        color:white;
+        margin-bottom: 20px;
+    }
+    .logo1{
+        margin-top: 40px;
+        margin-bottom: 30px;
+    }
+    i,h1{
+        color:white;
+    }
+    body{
+        background: rgb(57,46,49);
+background: radial-gradient(circle, rgba(57,46,49,0.9473039215686274) 23%, rgba(1,8,25,1) 100%);
+    }
+    .form{
+        background-image: url("{% static 'images/shutterstock_218789311.jpg' %}");
+        border: solid;
+        border-radius: 25px;
+        width:40%;
+        background-color: rgb(77, 35, 116);
+    }
+    label{
+        font-size: 25px;
+    }
+    input{
+        width: 50%;
+        height: 20px;
+        margin-bottom:30px;
+    }
+</style>
+</body>
+</html>

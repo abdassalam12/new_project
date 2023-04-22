@@ -1,0 +1,90 @@
+body{
+    background: rgb(57,46,49);
+background: radial-gradient(circle, rgba(57,46,49,0.9473039215686274) 23%, rgba(1,8,25,1) 100%);
+}
+.logo1{
+    color :white;
+    margin-left: -80px;
+}
+#button1{
+    display:none;
+    margin-left: 300px;
+    margin-top: -68px;
+    margin-bottom: 10px;
+}
+#body{
+    display:block;
+    margin :auto;
+    width: 500px;
+    margin-top: 70px;
+    border-radius: 30px;
+  
+}
+#body1{
+    display:block;
+    margin :auto;
+    width: 500px;
+    margin-top: 70px;
+    border-radius: 30px;
+   
+}
+button{
+    margin-left:100px ;
+    border-radius: 20px;
+    background-color:white;
+    border:none;
+}
+#button{
+    margin-left: 130px;
+}
+.question{
+    text-align: center;
+    padding: 20px;
+}
+.input{ 
+    padding: 10px;
+}
+.reponse{
+    font-weight: bold;
+    align-items: center;
+}
+.qu{
+    text-align: center;
+}
+.choixs{
+    margin: auto;
+    width: 80%;
+    background-color: white;
+    border-radius: 15px;
+    padding: 10px;
+}
+.choixs1{
+    height: 40px;
+    margin: auto;
+    width: 80%;
+    text-align: center;
+    background-color: white;
+    border-radius: 15px;
+}
+#body1.choixs{
+    margin-top: 50px;
+}
+button{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 8px;
+    width: 80px;
+}
+.gif{
+    margin:auto;
+    width: 100%;
+    text-align: center;
+}
+.img{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+}
+img{
+    width: 100%;
+}

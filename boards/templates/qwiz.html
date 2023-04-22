@@ -1,0 +1,310 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/qwiz.css' %}">
+</head>
+<body >
+<style>
+
+    #body,#body1{
+        background-image: url("{% static 'images/shutterstock_218789311.jpg' %}");
+    }
+</style>
+<div class="logo1" style="color: white;margin:auto;width:350px;">
+    <i class="fa-solid fa-laptop-code fa-2xl">Programplanet</i>
+</div>
+<div id="body">
+    
+    <div class="question">
+        <h1 >Questions <span id="maVariable"></span> of 5</h1>
+    </div>
+    <div class="question">
+        <h2 ><span id="question"></span></h2>
+    </div>
+    <div class="input">
+        <div class="choixs"><input  type="radio" id="option1"  value="option1" name="name" class="choix"><span id="choix1"></span></div>
+    </div>
+    <div class="input">
+        <div class="choixs"><input  type="radio" id="option2" value="option2" name="name" class="choix"><span id="choix2"></span></div>
+    </div>
+    <div class="input">
+        <div class="choixs"><input  type="radio" id="option3" value="option3" name="name" class="choix"><span id="choix3"></span></div>
+    </div>
+    <div class="input">
+        <div class="choixs"><input  type="radio"id="option4" value="option4" name="name" class="choix"><span id="choix4"></span></div>
+    </div>
+    <button id="button" onclick="revenir()"  >
+        previous
+    </button>
+    <button onclick="ajouter()"  id="next" >
+        next
+    </button>
+    <button  id="button1" onclick="finfonction()">
+        add your contribution
+    </button>
+</div>
+<div id="body1">
+    <div class="question">
+        <h1 >Your score is <span id="note"></span>/5</h1>
+    </div>
+    <div class="input" id="input0">
+        <p id="a" class="qu"> </p>
+        <div class="choixs1"><p id="reponse" class="reponse"> </p></div>
+    </div>  
+    <div class="input" id="input1">
+        <p id="b" class="qu"> </p>
+        <div class="choixs1"><p id="reponse2" class="reponse"> </p></div>
+    </div>
+    <div class="input" id="input2">
+        <p id="c" class="qu"> </p>
+        <div class="choixs1"><p id="reponse3" class="reponse"> </p></div>
+    </div>
+    <div class="input" id="input3">
+        <p id="d" class="qu"> </p>
+        <div class="choixs1"><p id="reponse4" class="reponse"> </p></div>
+    </div>
+    <div class="input" id="input4">
+        <p id="e" class="qu"> </p>
+        <div class="choixs1"><p id="reponse5" class="reponse"> </p></div>
+    </div>
+</div>
+<div class="gif">
+    <div class="img"><p><img src="" id="gif5"></p></div>
+</div>
+<div class="gif">
+    <div class="img"><p><img src="" id="gif4"></p></div>
+</div>
+
+    <script >
+        questione = [];  
+      choix1 = [];
+      choix2 = [];
+      choix3 = [];
+      choix4 = [];
+        "{% for y in video1.questions.all %}"
+        questione.push("{{y.text}}") ;
+        choix1.push("{{y.choice1}}") ;
+        choix2.push("{{y.choice2}}") ;
+        choix3.push("{{y.choice3}}") ;
+        choix4.push("{{y.choice4}}") ;
+        "{% endfor %}"
+        document.getElementById("body1").style.display="none";
+        document.getElementById("gif5").style.display="none";
+        document.getElementById("gif4").style.display="none";
+        var x = 0
+        let nb = 1;
+        document.getElementById("maVariable").innerHTML = nb;
+        nb = 0;
+        var page1 = {
+            question : questione[0] ,
+            choix1 : choix1[0],
+            choix2 : choix2[0],
+            choix3 : choix3[0],
+            choix4 : choix4[0],
+            answer : "option1",
+            real_answer :"A) You’ll be shocked when I tell you who called me last night.",
+        };
+        var page2 = {
+            question : questione[1] ,
+            choix1 : choix1[1],
+            choix2 : choix2[1],
+            choix3 : choix3[1],
+            choix4 : choix4[1],
+            real_answer :"&ltb>",
+        };
+        var page3 = {
+            question : questione[2] ,
+            choix1 : choix1[2],
+            choix2 : choix2[2],
+            choix3 : choix3[2],
+            choix4 : choix4[2],
+            answer : "option3",
+            real_answer :"&lt;a href=!xxx@yyy.com'>",
+        };
+        var page4 = {
+            question : questione[3] ,
+            choix1 : choix1[3],
+            choix2 : choix2[3],
+            choix3 : choix3[3],
+            choix4 : choix4[3],
+            answer : "option2",
+            real_answer :"ul",
+        };
+        var page5 = {
+            question : questione[4] ,
+            choix1 : choix1[4],
+            choix2 : choix2[4],
+            choix3 : choix3[4],
+            choix4 : choix4[4],
+            answer : "option3",
+            real_answer :"&lt;img src=&quotimage.gif&quot alt=&quotMyImage&quot>",
+        };
+        var tableau = [page1,page2,page3,page4,page5,page5]
+        function ajouter(){
+            var input1 = document.getElementById("option1");
+            var input2 = document.getElementById("option2");
+            var input3 = document.getElementById("option3");
+            var input4 = document.getElementById("option4");
+            var tableau = [page1,page2,page3,page4,page5,page5];
+           valeurInput = ""
+           if (input1.checked) {
+               var valeurInput = input1.value;
+           }
+           if (input2.checked) {
+               var valeurInput = input2.value;
+           }
+           if (input3.checked) {
+               var valeurInput = input3.value;
+           }
+           if (input4.checked) {
+               var valeurInput = input4.value;
+           }
+           console.log(tableau[nb].answer )
+                     if(valeurInput != tableau[nb].answer){
+                       tableau2.push(nb)
+                       console.log(tableau2)
+                       console.log("false");
+                     }
+                     else{
+                       console.log("trueZ");
+                       x++;
+                     }
+                     console.log(x)
+                     nb++;
+        document.getElementById("maVariable").innerHTML = nb+1;
+        document.getElementById("question").innerHTML = tableau[nb].question;
+        document.getElementById("choix1").innerHTML = tableau[nb].choix1;
+        document.getElementById("choix2").innerHTML = tableau[nb].choix2;
+        document.getElementById("choix3").innerHTML = tableau[nb].choix3;
+        document.getElementById("choix4").innerHTML = tableau[nb].choix4;
+        input1.checked =false;
+        input2.checked =false;
+        input3.checked =false;
+        input4.checked =false;
+        }
+        next = document.getElementById("next");
+        button1 = document.getElementById("button1");
+        next.addEventListener("click",function(){finir();});
+        function finir(){
+            if (nb==4){
+               next.style.display = "none";
+               button1.style.display = "block"
+            }
+        }
+        function revenir(){
+        
+            nb--;
+            x--;
+            document.getElementById("maVariable").innerHTML = nb;
+         document.getElementById("question").innerHTML = tableau[nb].question;
+         document.getElementById("choix1").innerHTML = tableau[nb].choix1;
+         document.getElementById("choix2").innerHTML = tableau[nb].choix2;
+         document.getElementById("choix3").innerHTML = tableau[nb].choix3;
+         document.getElementById("choix4").innerHTML = tableau[nb].choix4;
+         }
+        document.getElementById("question").innerHTML = tableau[nb].question;
+        document.getElementById("choix1").innerHTML = tableau[nb].choix1;
+        document.getElementById("choix2").innerHTML = tableau[nb].choix2;
+        document.getElementById("choix3").innerHTML = tableau[nb].choix3;
+        document.getElementById("choix4").innerHTML = tableau[nb].choix4;
+        tableau2 =[];
+        function finfonction(){
+            if (nb==4){
+            var input1 = document.getElementById("option1");
+            var input2 = document.getElementById("option2");
+            var input3 = document.getElementById("option3");
+            var input4 = document.getElementById("option4");
+            var tableau = [page1,page2,page3,page4,page5,page5];
+           valeurInput = ""
+           if (input1.checked) {
+               var valeurInput = input1.value;
+           }
+           if (input2.checked) {
+               var valeurInput = input2.value;
+           }
+           if (input3.checked) {
+               var valeurInput = input3.value;
+           }
+           if (input4.checked) {
+               var valeurInput = input4.value;
+           }
+           console.log(tableau[nb].answer )
+                     if(valeurInput != tableau[nb].answer){
+                       tableau2.push(nb)
+                       console.log(tableau2)
+                       console.log("false");
+                     }
+                     else{
+                       console.log("trueZ");
+                       x++
+                     }
+                     console.log(x)
+        document.getElementById("body1").style.display="block";
+        document.getElementById("note").innerHTML = x;
+        body = document.getElementById("body");
+        reponse = document.getElementById("reponse");
+        input = document.getElementsByClassName("input")
+            if(tableau2.length>=1){
+                document.getElementById("a").innerHTML = tableau[tableau2[0]].question;
+            document.getElementById("reponse").innerHTML = tableau[tableau2[0]].real_answer;}
+            else{
+                document.getElementById("input0").style.display = "none";
+            }
+            if(tableau2.length>=2){
+            document.getElementById("b").innerHTML = tableau[tableau2[1]].question;    
+            document.getElementById("reponse2").innerHTML = tableau[tableau2[1]].real_answer;}
+            else{
+                document.getElementById("input1").style.display = "none";
+            }
+            if(tableau2.length>=3){
+            document.getElementById("c").innerHTML = tableau[tableau2[2]].question;
+            document.getElementById("reponse3").innerHTML = tableau[tableau2[2]].real_answer;}
+            else{
+                document.getElementById("input2").style.display = "none";
+            }
+            }
+            if(tableau2.length>=4){
+            document.getElementById("d").innerHTML = tableau[tableau2[3]].question;
+            document.getElementById("reponse4").innerHTML = tableau[tableau2[3]].real_answer;}
+            else{
+                document.getElementById("input3").style.display = "none";
+            }
+            if(tableau2.length>=4){
+            document.getElementById("e").innerHTML = tableau[tableau2[4]].question;
+            document.getElementById("reponse5").innerHTML = tableau[tableau2[4]].real_answer;}
+            else{
+                document.getElementById("input4").style.display = "none";
+            }
+        body.style.display ="none";
+        reponse.style.display = "block";
+        if(x==0){
+            document.getElementById("gif0").style.display="block";
+        }
+        if(x==1){
+            document.getElementById("gif1").style.display="block";
+        }
+        if(x==2){
+            document.getElementById("gif2").style.display="block";
+        }
+        if(x==3){
+            document.getElementById("gif3").style.display="block";
+        }
+        if(x==4){
+            document.getElementById("gif4").style.display="block";
+        }
+        if(x==5){
+            document.getElementById("gif5").style.display="block";
+        }
+        
+        }
+    </script>
+    
+</body>
+</html>

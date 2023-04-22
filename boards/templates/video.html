@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/youtube.css' %}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+    <title>Document</title>
+</head>
+
+<body >
+    
+    <div class="main_container" >
+        <div class="barre">
+            <div id="icon_container" onclick="apparaitre()">
+                <div class="icon_container1">
+                    <i class="fa-solid fa-bars bar"></i>
+                </div>
+                <div id="select" style="display:none;">
+                    <ul>
+                        <li><i class="fa-solid fa-house home"></i>
+                            <div class="Acceuil">Acceuil</div>
+                        </li>
+                        <li><i class="fa-solid fa-clock"></i>
+                            <div class="Acceuil">shorts</div>
+                        </li>
+                        <li><i class="fa-solid fa-video"></i>
+                            <div class="Acceuil">abonnements</div>
+                        </li>
+                        <li><i class="fa-solid fa-photo-film"></i>
+                            <div class="Acceuil">Bibliotheque</div>
+                        </li>
+                        <li><i class="fa-sharp fa-solid fa-clock-rotate-left"></i>
+                            <div class="Acceuil">Historique</div>
+                        </li>
+                        <li><i class="fa-solid fa-video"></i>
+                            <div class="Acceuil">Vos videos</div>
+                        </li>
+                        <li><i class="fa-solid fa-clock"></i>
+                            <div class="Acceuil">A regarder plus tard </div>
+                        </li>
+                        <li onclick="iapparaitre()"><i class="fa-sharp fa-solid fa-thumbs-up" ></i>
+                            <div class="Acceuil">Like</div>
+                        </li>
+                        <li><i class="fa-solid fa-angle-down"></i>
+                            <div class="plus_container">
+                                <div class="Acceuil plus">Plus</div>
+                                <div class="ul2">
+                                    <ul class="select2">
+                                        <li><i class="fa-sharp fa-solid fa-bars-staggered"></i>
+                                            <div class="plus1">K</div>
+                                        </li>
+                                        <li><i class="fa-sharp fa-solid fa-bars-staggered"></i>
+                                            <div class="plus1">H</div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                    </ul>
+                </div>
+            </div>
+            <div class="logo1">
+                <i class="fa-solid fa-laptop-code fa-2xl">Programplanet</i>
+            </div>
+
+            <div class="input">
+                <form method="POST" action="" >{% csrf_token %}
+                <input type="text" class="input" name="recherche">
+                
+            </div>
+            <button class="search_btn"><i class="fa-solid fa-magnifying-glass search"></i></button>
+        </form>
+            <div class="micro">
+                <i class="fa-solid fa-microphone micro1"></i>
+            </div>
+            <div class="vid">
+                <i class="fa-solid fa-video videos"></i>
+            </div>
+            <div class="not">
+                <i class="fa-solid fa-bell notification"></i>
+            </div>
+        </div>
+    <div class="video5" style="border-color: white; width:705px; height:399px;margin-top:-1px;">
+        <video controls style="width: 700px;margin-left:-1px;">
+            <source src="{{video1.video.url}}" type="video/mp4"/>
+        </video>
+    </div>
+    <form  method="GET" action="" >{% csrf_token %}
+    <div >
+    <button class="search_btn1"><a style="color:white" href="/qwiz/?id={{video1.id}}">pass the qwiz</a></button>
+    </div>
+    </form>
+    </div>
+    <style>
+        .search_btn1{
+            padding: 20px;
+            padding-left: 45%;
+            padding-right: 50%;
+            border:solid;
+            border-color: white;
+            font-weight: bold;
+            font-size: 50px;
+        }
+        .video5,.qwiz{
+            display:inline-block;
+        }
+        .video5,.search_btn1{
+            display:inline-block;
+        }
+    </style>
+</body>
+</html>
